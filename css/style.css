@@ -1,0 +1,154 @@
+/* VIDAA TV App Styles - Optimized for 1920x1080 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #ffffff;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    cursor: none; /* Hide cursor for TV */
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 40px;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.status {
+    font-size: 28px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.status.active {
+    background: rgba(76, 175, 80, 0.3);
+}
+
+.status.error {
+    background: rgba(244, 67, 54, 0.3);
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    overflow: hidden;
+}
+
+.content-wrapper {
+    height: 100%;
+    display: flex;
+    gap: 30px;
+}
+
+.monitor-view {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Panel Styles */
+.info-panel,
+.monitoring-panel {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-panel h2,
+.monitoring-panel h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 15px;
+}
+
+#system-info p {
+    font-size: 28px;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+#system-info span {
+    color: #4fc3f7;
+    font-weight: 600;
+}
+
+#monitoring-data {
+    font-size: 24px;
+    line-height: 1.8;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.help-text {
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+}
+
+.key-hint {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* Focus/Selection Styles for Remote Control Navigation */
+.focusable {
+    transition: all 0.3s ease;
+}
+
+.focusable:focus,
+.focusable.focused {
+    outline: 4px solid #ffeb3b;
+    outline-offset: 4px;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 235, 59, 0.5);
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}

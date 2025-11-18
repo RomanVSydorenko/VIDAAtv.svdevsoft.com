@@ -1,0 +1,23 @@
+{
+  "name": "tv-monitoring-vidaa",
+  "version": "1.0.0",
+  "description": "TV monitoring application for VIDAA platform",
+  "main": "index.html",
+  "scripts": {
+    "serve": "python3 -m http.server 8080",
+    "package": "zip -r tv-monitoring.wgt config.xml index.html icon.png css/ js/ -x '*.DS_Store'",
+    "test": "echo \"Open index.html in browser for testing\""
+  },
+  "keywords": [
+    "vidaa",
+    "smart-tv",
+    "monitoring",
+    "hisense"
+  ],
+  "author": "SV Dev Soft",
+  "license": "PROPRIETARY",
+  "repository": {
+    "type": "git",
+    "url": "https://tv.svdevsoft.com"
+  }
+}

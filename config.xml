@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" 
+        xmlns:access="http://www.w3.org/2008/access-control"
+        id="com.svdevsoft.tv.monitoring" 
+        version="1.0.0">
+    
+    <name>TV Monitoring</name>
+    <description>TV monitoring application for VIDAA platform</description>
+    <author email="support@svdevsoft.com" href="https://tv.svdevsoft.com">SV Dev Soft</author>
+    
+    <icon src="icon.png"/>
+    <content src="index.html"/>
+    
+    <preference name="resolution" value="1920x1080" />
+    <preference name="autoHideMousePointer" value="true" />
+    
+    <feature name="http://www.hismarttv.com/api/tv">
+        <param name="version" value="1.0" />
+    </feature>
+    
+    <feature name="http://www.hismarttv.com/api/network">
+        <param name="version" value="1.0" />
+    </feature>
+    
+    <access origin="*" subdomains="true">
+        <allow-headers>*</allow-headers>
+        <allow-methods>*</allow-methods>
+    </access>
+    
+</widget>

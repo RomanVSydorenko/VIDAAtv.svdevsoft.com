@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>TV Monitoring</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>TV Monitoring</h1>
+            <div id="status" class="status">Initializing...</div>
+        </header>
+        
+        <main>
+            <div class="content-wrapper">
+                <div id="monitor-view" class="monitor-view">
+                    <!-- Main monitoring content will be displayed here -->
+                    <div class="info-panel">
+                        <h2>System Information</h2>
+                        <div id="system-info">
+                            <p>Device: <span id="device-model">Loading...</span></p>
+                            <p>Network: <span id="network-status">Loading...</span></p>
+                            <p>Time: <span id="current-time">--:--:--</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="monitoring-panel">
+                        <h2>Monitoring Dashboard</h2>
+                        <div id="monitoring-data">
+                            <!-- Dynamic monitoring content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="help-text">
+                <span class="key-hint">◀ Back</span>
+                <span class="key-hint">▶ Select</span>
+                <span class="key-hint">Exit to quit</span>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- VIDAA SDK -->
+    <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
+    
+    <!-- Application scripts -->
+    <script src="js/vidaa-handler.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
