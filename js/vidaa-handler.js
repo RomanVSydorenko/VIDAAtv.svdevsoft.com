@@ -118,23 +118,29 @@ class VIDAAHandler {
         
         switch(event.keyCode) {
             case 10009: // VK_BACK
+                // Let iframe handle back, or go back in history
+                if (window.app && window.app.iframe) {
+                    window.history.back();
+                }
+                break;
             case 10182: // VK_EXIT
                 this.exitApp();
                 break;
+            case 415: // VK_PLAY/PAUSE or reload
+            case 412: // VK_REWIND or reload
+                // Reload store
+                if (window.app) {
+                    window.app.reloadStore();
+                }
+                break;
             case 13: // VK_ENTER
-                // Handle select/enter
+                // Iframe will handle enter
                 break;
             case 37: // VK_LEFT
-                // Handle left navigation
-                break;
             case 38: // VK_UP
-                // Handle up navigation
-                break;
             case 39: // VK_RIGHT
-                // Handle right navigation
-                break;
             case 40: // VK_DOWN
-                // Handle down navigation
+                // Iframe will handle navigation
                 break;
         }
     }
@@ -147,17 +153,23 @@ class VIDAAHandler {
         
         switch(event.key) {
             case 'Escape':
-            case 'Backspace':
                 this.exitApp();
                 break;
-            case 'Enter':
-                // Handle select
+            case 'Backspace':
+                window.history.back();
                 break;
+            case 'r':
+            case 'R':
+                if (window.app) {
+                    window.app.reloadStore();
+                }
+                break;
+            case 'Enter':
             case 'ArrowLeft':
             case 'ArrowUp':
             case 'ArrowRight':
             case 'ArrowDown':
-                // Handle navigation
+                // Iframe will handle these
                 break;
         }
     }
