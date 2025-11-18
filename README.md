@@ -1,17 +1,15 @@
-# Komitex TV - VIDAA App
+# Komitex TV — Android TV APK
 
-Українське телебачення для VIDAA Smart TV платформи з інтерфейсом як у професійних IPTV додатках.
+Офіційний APK для Android/Google TV з підтримкою пульта та оптимізацією для великих екранів.
 
-## 🌐 Installation Page
-**Install from:** https://romanvsydorenko.github.io/VIDAAtv.svdevsoft.com/install.html
+## 🌐 Install
+- Installer page: https://romanvsydorenko.github.io/VIDAAtv.svdevsoft.com/install.html
+- Direct APK: https://romanvsydorenko.github.io/VIDAAtv.svdevsoft.com/apk/net.komitex.newtv-Signed.apk
 
 ## 📺 Features
-
-- **Список українських каналів**: 1+1, ICTV, СТБ, Новий, та інші
-- **Програма передач**: Актуальна телепрограма з вибраними передачами
-- **TV-оптимізований інтерфейс**: Дизайн розроблений для 1920x1080 екранів
-- **Навігація пультом**: Повна підтримка навігації TV пультом
-- **Сучасний дизайн**: Інтерфейс в стилі Komitex з градієнтами та анімаціями
+- **Android/Google TV APK**: Спростена установка, підтримка пульта
+- **Українські канали**: контент із tv.svdevsoft.com
+- **Легка навігація**: кнопки пульта, фокус-стани
 
 ## Project Structure
 
