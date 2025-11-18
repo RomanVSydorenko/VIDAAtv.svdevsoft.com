@@ -1,9 +1,17 @@
-# SV Dev Soft TV - VIDAA App
+# Komitex TV - VIDAA App
 
-A VIDAA Smart TV application that displays tv.svdevsoft.com in a TV-optimized interface.
+Українське телебачення для VIDAA Smart TV платформи з інтерфейсом як у професійних IPTV додатках.
 
 ## 🌐 Installation Page
 **Install from:** https://romanvsydorenko.github.io/VIDAAtv.svdevsoft.com/install.html
+
+## 📺 Features
+
+- **Список українських каналів**: 1+1, ICTV, СТБ, Новий, та інші
+- **Програма передач**: Актуальна телепрограма з вибраними передачами
+- **TV-оптимізований інтерфейс**: Дизайн розроблений для 1920x1080 екранів
+- **Навігація пультом**: Повна підтримка навігації TV пультом
+- **Сучасний дизайн**: Інтерфейс в стилі Komitex з градієнтами та анімаціями
 
 ## Project Structure
 
