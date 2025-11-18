@@ -1,6 +1,6 @@
-# TV Monitoring - VIDAA App
+# HiZ Store Viewer - VIDAA App
 
-A monitoring application designed for VIDAA Smart TV platform.
+A VIDAA Smart TV application that displays the HiZ Store (https://phasedgapple.github.io/HiZ-Store/store.html) in a TV-optimized interface.
 
 ## Project Structure
 
@@ -18,18 +18,21 @@ monitoryng/
 
 ## Features
 
+- **HiZ Store Integration**: Full-screen display of HiZ Store website
 - **VIDAA Platform Integration**: Full integration with VIDAA Smart TV APIs
-- **Remote Control Support**: Navigate using TV remote control
-- **TV-Optimized UI**: Designed for 1920x1080 resolution with focus navigation
-- **System Monitoring**: Display device information and monitoring data
+- **Remote Control Support**: Navigate the store using TV remote control
+- **TV-Optimized UI**: Designed for 1920x1080 resolution
 - **Development Mode**: Works in browser for development/testing
+- **Reload Function**: Press R to reload the store content
 
 ## Development
 
 ### Testing in Browser
 Open `index.html` in a web browser. The app will run in mock mode with keyboard navigation:
-- **ESC/Backspace**: Exit
-- **Arrow Keys**: Navigate
+- **ESC**: Exit
+- **Backspace**: Go back
+- **R**: Reload store
+- **Arrow Keys**: Navigate within store
 - **Enter**: Select
 
 ### Building for VIDAA
@@ -42,6 +45,7 @@ Open `index.html` in a web browser. The app will run in mock mode with keyboard 
 
 2. Package the application:
    - Create a `.wgt` file (widget package) containing all files
+   - Use: `zip -r hiz-store.wgt config.xml index.html icon.png css/ js/`
    - Sign the package with your developer certificate
 
 3. Deploy to VIDAA TV:
