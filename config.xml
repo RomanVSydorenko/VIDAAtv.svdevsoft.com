@@ -4,8 +4,8 @@
         id="com.svdevsoft.tv.monitoring" 
         version="1.0.0">
     
-    <name>HiZ Store</name>
-    <description>HiZ Store application for VIDAA platform</description>
+    <name>SV Dev Soft TV</name>
+    <description>SV Dev Soft TV viewer for VIDAA platform</description>
     <author email="support@svdevsoft.com" href="https://tv.svdevsoft.com">SV Dev Soft</author>
     
     <icon src="icon.png"/>

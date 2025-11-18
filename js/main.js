@@ -1,9 +1,9 @@
 /**
  * Main Application Entry Point
- * HiZ Store Viewer for VIDAA Platform
+ * SV Dev Soft TV Viewer for VIDAA Platform
  */
 
-class StoreApp {
+class TVApp {
     constructor() {
         this.initialized = false;
         this.iframe = null;
@@ -13,7 +13,7 @@ class StoreApp {
      * Initialize the application
      */
     async init() {
-        console.log('Starting HiZ Store Application...');
+        console.log('Starting SV Dev Soft TV Application...');
         
         try {
             // Update status
@@ -33,12 +33,12 @@ class StoreApp {
             
             // Setup iframe load handler
             this.iframe.addEventListener('load', () => {
-                console.log('HiZ Store loaded successfully');
+                console.log('TV content loaded successfully');
                 this.updateStatus('Ready', true);
             });
             
             this.iframe.addEventListener('error', () => {
-                console.error('Error loading HiZ Store');
+                console.error('Error loading TV content');
                 this.updateStatus('Error loading store', false);
             });
             
@@ -52,10 +52,10 @@ class StoreApp {
     }
 
     /**
-     * Reload the store
+     * Reload the content
      */
     reloadStore() {
-        console.log('Reloading HiZ Store...');
+        console.log('Reloading TV content...');
         if (this.iframe) {
             this.updateStatus('Reloading...', false);
             this.iframe.src = this.iframe.src;
@@ -86,7 +86,7 @@ class StoreApp {
 }
 
 // Create app instance
-const app = new StoreApp();
+const app = new TVApp();
 
 // Initialize when DOM is ready
 window.addEventListener('load', () => {

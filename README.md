@@ -1,6 +1,9 @@
-# HiZ Store Viewer - VIDAA App
+# SV Dev Soft TV - VIDAA App
 
-A VIDAA Smart TV application that displays the HiZ Store (https://phasedgapple.github.io/HiZ-Store/store.html) in a TV-optimized interface.
+A VIDAA Smart TV application that displays tv.svdevsoft.com in a TV-optimized interface.
+
+## 🌐 Installation Page
+**Install from:** https://romanvsydorenko.github.io/VIDAAtv.svdevsoft.com/install.html
 
 ## Project Structure
 
@@ -18,21 +21,22 @@ monitoryng/
 
 ## Features
 
-- **HiZ Store Integration**: Full-screen display of HiZ Store website
+- **TV.SVDevSoft.com Integration**: Full-screen display of tv.svdevsoft.com website
 - **VIDAA Platform Integration**: Full integration with VIDAA Smart TV APIs
-- **Remote Control Support**: Navigate the store using TV remote control
+- **Remote Control Support**: Navigate using TV remote control
 - **TV-Optimized UI**: Designed for 1920x1080 resolution
 - **Development Mode**: Works in browser for development/testing
-- **Reload Function**: Press R to reload the store content
+- **Reload Function**: Press R to reload content
 
 ## Development
 
 ### Testing in Browser
-Open `index.html` in a web browser. The app will run in mock mode with keyboard navigation:
+Open `index.html` in a web browser or visit https://romanvsydorenko.github.io/VIDAAtv.svdevsoft.com/
+The app will run in mock mode with keyboard navigation:
 - **ESC**: Exit
 - **Backspace**: Go back
-- **R**: Reload store
-- **Arrow Keys**: Navigate within store
+- **R**: Reload content
+- **Arrow Keys**: Navigate within site
 - **Enter**: Select
 
 ### Building for VIDAA
@@ -45,7 +49,7 @@ Open `index.html` in a web browser. The app will run in mock mode with keyboard 
 
 2. Package the application:
    - Create a `.wgt` file (widget package) containing all files
-   - Use: `zip -r hiz-store.wgt config.xml index.html icon.png css/ js/`
+   - Use: `zip -r svdevsoft-tv.wgt config.xml index.html icon.png css/ js/`
    - Sign the package with your developer certificate
 
 3. Deploy to VIDAA TV:
