@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komitex TV — VIDAA TV Installation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .logo-text {
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .tv-brand-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .app-info {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .app-info p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .download-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            font-size: 1.2em;
+            padding: 15px 40px;
+        }
+        
+        .method-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0 30px;
+            flex-wrap: wrap;
+        }
+        
+        .method-tab {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            font-size: 1.1em;
+        }
+        
+        .method-tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .method-tab.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-color: rgba(255, 255, 255, 0.5);
+            font-weight: bold;
+        }
+        
+        .method-content {
+            display: none;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .method-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .method-content h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #fbbf24;
+        }
+        
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #f093fb;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.1em;
+        }
+        
+        .step-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #fbbf24;
+        }
+        
+        .step-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-left: 50px;
+        }
+        
+        .step-content ul {
+            margin: 10px 0 10px 20px;
+        }
+        
+        .step-content li {
+            margin: 8px 0;
+        }
+        
+        .code-box {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            word-break: break-all;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .warning-box {
+            background: rgba(255, 152, 0, 0.2);
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .warning-box h3 {
+            margin-bottom: 10px;
+            color: #fbbf24;
+        }
+        
+        .info-box {
+            background: rgba(3, 169, 244, 0.2);
+            border-left: 4px solid #03a9f4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .info-box h3 {
+            margin-bottom: 10px;
+            color: #60d3ff;
+        }
+        
+        .success-box {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .success-box h3 {
+            margin-bottom: 10px;
+            color: #81c784;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .qr-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .qr-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        
+        .qr-code {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 15px 0;
+        }
+        
+        .troubleshooting {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .troubleshooting h2 {
+            margin-bottom: 25px;
+            font-size: 2em;
+            color: #fbbf24;
+        }
+        
+        .trouble-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #f093fb;
+        }
+        
+        .trouble-item h4 {
+            color: #f093fb;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.9;
+        }
+        
+        .footer a {
+            color: #60d3ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .container {
+                padding: 20px;
+            }
+            .download-btn {
+                font-size: 1.2em;
+                padding: 15px 30px;
+                display: block;
+                margin: 10px 0;
+            }
+            .method-tabs {
+                flex-direction: column;
+            }
+            .method-tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📺 Komitex TV</h1>
+            <p class="logo-text">Українські ТБ канали для вашого телевізора</p>
+            <div class="tv-brand-badge">🖥️ Hisense VIDAA TV Edition</div>
+        </div>
+        
+        <div class="app-info">
+            <p><strong>📦 Package:</strong> tv-monitoring.wgt</p>
+            <p><strong>🖥️ Platform:</strong> Hisense VIDAA Smart TV</p>
+            <p><strong>📺 Content:</strong> Українські ТБ канали з tv.svdevsoft.com</p>
+            <p><strong>🎯 Optimized:</strong> 1920x1080 Full HD | Remote Control Support</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🎮</div>
+                <h3>Remote Control</h3>
+                <p>Full support for VIDAA remote</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Fast & Smooth</h3>
+                <p>Optimized for TV performance</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🖥️</div>
+                <h3>Full HD</h3>
+                <p>Perfect 1920x1080 display</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🇺🇦</div>
+                <h3>Ukrainian Channels</h3>
+                <p>All your favorite UA TV</p>
+            </div>
+        </div>
+        
+        <div class="download-section">
+            <h2 style="margin-bottom: 20px; font-size: 2em;">📥 Download VIDAA Package</h2>
+            <a href="https://github.com/RomanVSydorenko/VIDAAtv.svdevsoft.com/releases/latest/download/tv-monitoring.wgt" class="download-btn">
+                ⬇️ Download tv-monitoring.wgt
+            </a>
+            <br>
+            <a href="https://github.com/RomanVSydorenko/VIDAAtv.svdevsoft.com/releases" class="download-btn secondary-btn" target="_blank">
+                📦 All Releases
+            </a>
+        </div>
+        
+        <h2 style="text-align: center; font-size: 2.5em; margin: 40px 0 20px; color: #fbbf24;">🚀 Installation Methods</h2>
+        
+        <div class="method-tabs">
+            <div class="method-tab active" onclick="showMethod('usb')">💾 USB Installation</div>
+            <div class="method-tab" onclick="showMethod('network')">🌐 Network Install</div>
+            <div class="method-tab" onclick="showMethod('store')">🏪 VIDAA Store</div>
+        </div>
+        
+        <!-- Method 1: USB Installation -->
+        <div id="method-usb" class="method-content active">
+            <h2>💾 Method 1: USB Installation (Recommended)</h2>
+            <p style="font-size: 1.2em; margin-bottom: 25px; opacity: 0.9;">The easiest way to install on your Hisense VIDAA TV</p>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Enable Developer Mode
+                </div>
+                <div class="step-content">
+                    <p>On your Hisense TV remote:</p>
+                    <ul>
+                        <li>Press <strong>Home</strong> button</li>
+                        <li>Navigate to <strong>Settings</strong> → <strong>System</strong> → <strong>About</strong></li>
+                        <li>Find <strong>Software Version</strong> and press OK <strong>5 times quickly</strong></li>
+                        <li>Enter Developer Mode PIN: <strong>0000</strong> or <strong>1234</strong> (default)</li>
+                        <li>✅ Developer Mode is now enabled</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Prepare USB Drive
+                </div>
+                <div class="step-content">
+                    <p>On your computer:</p>
+                    <ul>
+                        <li>Download <strong>tv-monitoring.wgt</strong> from the link above</li>
+                        <li>Format a USB drive (FAT32 or exFAT recommended)</li>
+                        <li>Copy <strong>tv-monitoring.wgt</strong> to the <strong>root directory</strong> of the USB drive</li>
+                        <li>Safely eject the USB drive</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Install on TV
+                </div>
+                <div class="step-content">
+                    <p>On your Hisense VIDAA TV:</p>
+                    <ul>
+                        <li>Insert the USB drive into your TV's USB port</li>
+                        <li>Press <strong>Home</strong> → navigate to <strong>Apps</strong></li>
+                        <li>Look for <strong>Developer</strong> or <strong>My Apps</strong> section</li>
+                        <li>Select <strong>Install from USB</strong> or <strong>Package Manager</strong></li>
+                        <li>Choose <strong>tv-monitoring.wgt</strong> from the list</li>
+                        <li>Confirm installation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Launch the App
+                </div>
+                <div class="step-content">
+                    <ul>
+                        <li>Press <strong>Home</strong> button</li>
+                        <li>Go to <strong>Apps</strong> or <strong>My Apps</strong></li>
+                        <li>Find <strong>TV Monitoring</strong> app (or Komitex TV)</li>
+                        <li>Press <strong>OK</strong> to launch</li>
+                        <li>Enjoy watching! 🎉</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="success-box">
+                <h3>🎉 Installation Complete!</h3>
+                <p>Your Komitex TV app is now installed and ready to use. Use your remote control to navigate channels and programs.</p>
+            </div>
+        </div>
+        
+        <!-- Method 2: Network Installation -->
+        <div id="method-network" class="method-content">
+            <h2>🌐 Method 2: Network Installation (Advanced)</h2>
+            <p style="font-size: 1.2em; margin-bottom: 25px; opacity: 0.9;">Install over your local network</p>
+            
+            <div class="warning-box">
+                <h3>⚠️ Requirements</h3>
+                <p>This method requires Developer Mode enabled and your TV connected to the same network as your computer.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Enable Developer Mode
+                </div>
+                <div class="step-content">
+                    <p>Follow the same steps as USB method to enable Developer Mode on your TV.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Get TV's IP Address
+                </div>
+                <div class="step-content">
+                    <p>On your Hisense TV:</p>
+                    <ul>
+                        <li>Go to <strong>Settings</strong> → <strong>Network</strong> → <strong>Network Status</strong></li>
+                        <li>Note your TV's IP address (e.g., <code>192.168.1.100</code>)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Enable Network Installation
+                </div>
+                <div class="step-content">
+                    <p>On your Hisense TV:</p>
+                    <ul>
+                        <li>Go to <strong>Settings</strong> → <strong>System</strong> → <strong>Developer Settings</strong></li>
+                        <li>Enable <strong>USB Debugging</strong> or <strong>Network Installation</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Install from Computer
+                </div>
+                <div class="step-content">
+                    <p><strong>Option A: Using HTTP Server</strong></p>
+                    <p>On your computer, open terminal/command prompt in the folder with tv-monitoring.wgt:</p>
+                    <div class="code-box">
+                        # Python 3<br>
+                        python3 -m http.server 8080<br><br>
+                        # Or Python 2<br>
+                        python -m SimpleHTTPServer 8080
+                    </div>
+                    <p>On your TV's browser app, navigate to:</p>
+                    <div class="code-box">
+                        http://YOUR_COMPUTER_IP:8080/tv-monitoring.wgt
+                    </div>
+                    
+                    <p style="margin-top: 20px;"><strong>Option B: Using VIDAA SDK (if installed)</strong></p>
+                    <div class="code-box">
+                        vidaa-cli install tv-monitoring.wgt --device 192.168.1.100
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h3>💡 Tip</h3>
+                <p>Replace <code>YOUR_COMPUTER_IP</code> with your actual computer's IP address on the local network. You can find it using <code>ipconfig</code> (Windows) or <code>ifconfig</code> (Mac/Linux).</p>
+            </div>
+        </div>
+        
+        <!-- Method 3: VIDAA Store -->
+        <div id="method-store" class="method-content">
+            <h2>🏪 Method 3: VIDAA App Store (For Public Distribution)</h2>
+            <p style="font-size: 1.2em; margin-bottom: 25px; opacity: 0.9;">Official distribution through VIDAA App Store</p>
+            
+            <div class="info-box">
+                <h3>ℹ️ About This Method</h3>
+                <p>This method is for app publishers who want to distribute their app publicly through the official VIDAA App Store. Users will be able to install it directly from the store on their TV.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Register as Developer
+                </div>
+                <div class="step-content">
+                    <ul>
+                        <li>Visit <strong>VIDAA Developer Portal</strong>: <a href="https://developer.vidaa.com" target="_blank" style="color: #60d3ff;">developer.vidaa.com</a></li>
+                        <li>Create a developer account</li>
+                        <li>Complete registration and verification</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Prepare App Package
+                </div>
+                <div class="step-content">
+                    <ul>
+                        <li>Ensure your <strong>tv-monitoring.wgt</strong> meets VIDAA guidelines</li>
+                        <li>Prepare app screenshots and descriptions</li>
+                        <li>Create promotional materials (icons, banners)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Submit for Review
+                </div>
+                <div class="step-content">
+                    <ul>
+                        <li>Upload <strong>tv-monitoring.wgt</strong> to developer portal</li>
+                        <li>Fill in app information and metadata</li>
+                        <li>Submit for VIDAA review</li>
+                        <li>Wait for approval (typically 1-2 weeks)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    App Goes Live
+                </div>
+                <div class="step-content">
+                    <ul>
+                        <li>Once approved, app appears in VIDAA App Store</li>
+                        <li>Users can install directly from their TV</li>
+                        <li>No developer mode required for end users</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Important Notes</h3>
+                <ul>
+                    <li>Apps must comply with VIDAA content and technical guidelines</li>
+                    <li>Review process may take 1-2 weeks</li>
+                    <li>For personal use, USB or Network installation is recommended</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- QR Code Section -->
+        <div class="qr-section">
+            <h3>📱 Quick Download via QR Code</h3>
+            <p style="opacity: 0.9; margin-bottom: 15px;">Scan this QR code with your phone to download the package:</p>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://github.com/RomanVSydorenko/VIDAAtv.svdevsoft.com/releases/latest/download/tv-monitoring.wgt" 
+                     alt="QR Code for VIDAA package download" 
+                     width="250" 
+                     height="250">
+            </div>
+            <p style="margin-top: 15px; opacity: 0.8;">Or visit: <a href="https://romanvsydorenko.github.io/VIDAAtv.svdevsoft.com/vidaa-install.html" style="color: #60d3ff;">romanvsydorenko.github.io/VIDAAtv.svdevsoft.com</a></p>
+        </div>
+        
+        <!-- Using the App -->
+        <div class="method-content active" style="display: block;">
+            <h2>🎮 Using Komitex TV on Your VIDAA TV</h2>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">📺</span>
+                    Remote Control Guide
+                </div>
+                <div class="step-content">
+                    <ul>
+                        <li><strong>Arrow Keys (↑ ↓ ← →):</strong> Navigate channels and programs</li>
+                        <li><strong>OK/Enter:</strong> Select channel or program</li>
+                        <li><strong>Back:</strong> Return to previous screen</li>
+                        <li><strong>Exit:</strong> Close the app</li>
+                        <li><strong>Number Keys:</strong> Quick channel selection</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📋</div>
+                    <h3>Channel List</h3>
+                    <p>Browse all available Ukrainian TV channels</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎬</div>
+                    <h3>Program Guide</h3>
+                    <p>See current and upcoming programs</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⏯️</div>
+                    <h3>Live Streaming</h3>
+                    <p>Watch live TV directly on your TV</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>TV-Optimized UI</h3>
+                    <p>Beautiful interface designed for TV</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Troubleshooting -->
+        <div class="troubleshooting">
+            <h2>🔧 Troubleshooting</h2>
+            
+            <div class="trouble-item">
+                <h4>❌ App won't install</h4>
+                <p><strong>Solution:</strong> Make sure Developer Mode is enabled. Go to Settings → System → About → Press OK 5 times on Software Version.</p>
+            </div>
+            
+            <div class="trouble-item">
+                <h4>⚫ Black screen after launch</h4>
+                <p><strong>Solution:</strong> Try reinstalling the app. Press Home, then relaunch. Check TV logs if available in Developer Settings.</p>
+            </div>
+            
+            <div class="trouble-item">
+                <h4>🎮 Remote control not working</h4>
+                <p><strong>Solution:</strong> App may need focus. Press Home button, then launch the app again. Ensure the app is in the foreground.</p>
+            </div>
+            
+            <div class="trouble-item">
+                <h4>📦 "Invalid package" error</h4>
+                <p><strong>Solution:</strong> Redownload tv-monitoring.wgt file. Ensure it's not corrupted. Check that your TV supports VIDAA platform.</p>
+            </div>
+            
+            <div class="trouble-item">
+                <h4>🔌 USB not recognized</h4>
+                <p><strong>Solution:</strong> Try a different USB drive. Format it as FAT32. Make sure the .wgt file is in the root directory (not in a folder).</p>
+            </div>
+            
+            <div class="trouble-item">
+                <h4>⚠️ "Unsigned app" warning</h4>
+                <p><strong>Solution:</strong> This is normal for development apps. You can safely proceed. For production distribution, get a VIDAA signing certificate.</p>
+            </div>
+        </div>
+        
+        <!-- Additional Info -->
+        <div class="warning-box">
+            <h3>⚠️ Important Information</h3>
+            <ul style="margin-top: 10px; line-height: 1.8;">
+                <li>This app is designed specifically for <strong>Hisense VIDAA</strong> smart TVs</li>
+                <li>Developer mode must remain enabled for unsigned apps</li>
+                <li>For Android TV installation, use the <a href="./install.html" style="color: #fbbf24;">Android APK version</a> instead</li>
+                <li>The .wgt package is not compatible with other TV platforms (Samsung Tizen, LG webOS, etc.)</li>
+            </ul>
+        </div>
+        
+        <div class="info-box">
+            <h3>💡 Need Help?</h3>
+            <p>For support and updates, visit our website: <a href="https://tv.svdevsoft.com" target="_blank" style="color: #fff; font-weight: bold;">tv.svdevsoft.com</a></p>
+            <p style="margin-top: 10px;">GitHub Repository: <a href="https://github.com/RomanVSydorenko/VIDAAtv.svdevsoft.com" target="_blank" style="color: #fff; font-weight: bold;">VIDAAtv.svdevsoft.com</a></p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p style="font-size: 1.2em; margin-bottom: 10px;">📺 <strong>Other Platforms</strong></p>
+            <p><a href="./install.html">Android/Google TV APK</a> | <a href="./index.html">Web Version</a></p>
+            <p style="margin-top: 20px; opacity: 0.8;">© 2025 SV Dev Soft | <a href="https://tv.svdevsoft.com">tv.svdevsoft.com</a></p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">Made with ❤️ for Ukrainian TV viewers</p>
+        </div>
+    </div>
+    
+    <script>
+        function showMethod(methodId) {
+            // Hide all methods
+            document.querySelectorAll('.method-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.method-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected method
+            document.getElementById('method-' + methodId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
