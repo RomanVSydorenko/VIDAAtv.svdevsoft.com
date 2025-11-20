@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>Komitex TV - Web Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        #app-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #loading-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s;
+        }
+        
+        #loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-logo {
+            font-size: 72px;
+            font-weight: bold;
+            color: #00c8ff;
+            text-shadow: 0 0 20px rgba(0, 200, 255, 0.5);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top-color: #00c8ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: #fff;
+            font-size: 20px;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+        
+        #header {
+            background: rgba(15, 24, 41, 0.95);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+        
+        .header-logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #00c8ff;
+            font-style: italic;
+        }
+        
+        .header-info {
+            color: #fff;
+            opacity: 0.8;
+            font-size: 16px;
+        }
+        
+        .header-controls {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .control-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #fff;
+            font-size: 20px;
+        }
+        
+        .control-btn:hover {
+            background: rgba(0, 200, 255, 0.3);
+            border-color: #00c8ff;
+            transform: scale(1.1);
+        }
+        
+        #iframe-container {
+            flex: 1;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        #web-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #000;
+        }
+        
+        #error-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 24, 41, 0.95);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 500;
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        #error-screen.visible {
+            display: flex;
+        }
+        
+        .error-icon {
+            font-size: 100px;
+            margin-bottom: 30px;
+        }
+        
+        .error-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ff4757;
+        }
+        
+        .error-message {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+            max-width: 600px;
+        }
+        
+        .retry-btn {
+            background: linear-gradient(135deg, #00c8ff 0%, #0080ff 100%);
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .retry-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .footer-info {
+            background: rgba(15, 24, 41, 0.95);
+            padding: 10px 30px;
+            text-align: center;
+            color: #fff;
+            opacity: 0.6;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        <!-- Loading Screen -->
+        <div id="loading-screen">
+            <div class="loading-logo">Komitex TV</div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Завантаження...</div>
+        </div>
+        
+        <!-- Header -->
+        <div id="header">
+            <div class="header-logo">📺 Komitex TV</div>
+            <div class="header-info">Українське телебачення • tv.svdevsoft.com</div>
+            <div class="header-controls">
+                <button id="reload-btn" class="control-btn" title="Перезавантажити">🔄</button>
+                <button id="fullscreen-btn" class="control-btn" title="Повний екран">⛶</button>
+                <button id="back-btn" class="control-btn" title="Назад">←</button>
+            </div>
+        </div>
+        
+        <!-- Iframe Container -->
+        <div id="iframe-container">
+            <iframe 
+                id="web-viewer" 
+                src="https://tv.svdevsoft.com/" 
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
+            ></iframe>
+            
+            <!-- Error Screen -->
+            <div id="error-screen">
+                <div class="error-icon">⚠️</div>
+                <div class="error-title">Помилка завантаження</div>
+                <div class="error-message">Не вдалося завантажити контент. Перевірте підключення до інтернету.</div>
+                <button class="retry-btn" onclick="location.reload()">Спробувати знову</button>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer-info">
+            © 2025 SV Dev Soft | Використовуйте стрілки для навігації • ESC для виходу
+        </div>
+    </div>
+
+    <script src="js/vidaa-handler.js"></script>
+    <script src="js/viewer.js"></script>
+</body>
+</html>

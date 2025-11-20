@@ -4,12 +4,12 @@
         id="com.svdevsoft.tv.monitoring" 
         version="1.0.0">
     
-    <name>Komitex TV</name>
-    <description>Komitex TV - Ukrainian TV channels for VIDAA platform</description>
+    <name>Komitex TV Web Viewer</name>
+    <description>Komitex TV - Ukrainian TV channels web viewer for VIDAA platform</description>
     <author email="support@svdevsoft.com" href="https://tv.svdevsoft.com">SV Dev Soft</author>
     
     <icon src="icon.png"/>
-    <content src="index.html"/>
+    <content src="viewer.html"/>
     
     <preference name="resolution" value="1920x1080" />
     <preference name="autoHideMousePointer" value="true" />
