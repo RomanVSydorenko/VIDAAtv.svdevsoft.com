@@ -420,15 +420,19 @@
         <h2 style="text-align: center; font-size: 2.5em; margin: 40px 0 20px; color: #fbbf24;">🚀 Installation Methods</h2>
         
         <div class="method-tabs">
-            <div class="method-tab active" onclick="showMethod('usb')">💾 USB Installation</div>
-            <div class="method-tab" onclick="showMethod('network')">🌐 Network Install</div>
+            <div class="method-tab active" onclick="showMethod('network')">🌐 Network Install</div>
             <div class="method-tab" onclick="showMethod('store')">🏪 VIDAA Store</div>
         </div>
         
-        <!-- Method 1: USB Installation -->
-        <div id="method-usb" class="method-content active">
-            <h2>💾 Method 1: USB Installation (Recommended)</h2>
-            <p style="font-size: 1.2em; margin-bottom: 25px; opacity: 0.9;">The easiest way to install on your Hisense VIDAA TV</p>
+        <!-- Method 1: Network Installation -->
+        <div id="method-network" class="method-content active">
+            <h2>🌐 Method 1: Network Installation</h2>
+            <p style="font-size: 1.2em; margin-bottom: 25px; opacity: 0.9;">Install over your local network</p>
+            
+            <div class="warning-box">
+                <h3>⚠️ Requirements</h3>
+                <p>This method requires Developer Mode enabled and your TV connected to the same network as your computer.</p>
+            </div>
             
             <div class="step">
                 <div class="step-title">
@@ -444,82 +448,6 @@
                         <li>Enter Developer Mode PIN: <strong>0000</strong> or <strong>1234</strong> (default)</li>
                         <li>✅ Developer Mode is now enabled</li>
                     </ul>
-                </div>
-            </div>
-            
-            <div class="step">
-                <div class="step-title">
-                    <span class="step-number">2</span>
-                    Prepare USB Drive
-                </div>
-                <div class="step-content">
-                    <p>On your computer:</p>
-                    <ul>
-                        <li>Download <strong>tv-monitoring.wgt</strong> from the link above</li>
-                        <li>Format a USB drive (FAT32 or exFAT recommended)</li>
-                        <li>Copy <strong>tv-monitoring.wgt</strong> to the <strong>root directory</strong> of the USB drive</li>
-                        <li>Safely eject the USB drive</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="step">
-                <div class="step-title">
-                    <span class="step-number">3</span>
-                    Install on TV
-                </div>
-                <div class="step-content">
-                    <p>On your Hisense VIDAA TV:</p>
-                    <ul>
-                        <li>Insert the USB drive into your TV's USB port</li>
-                        <li>Press <strong>Home</strong> → navigate to <strong>Apps</strong></li>
-                        <li>Look for <strong>Developer</strong> or <strong>My Apps</strong> section</li>
-                        <li>Select <strong>Install from USB</strong> or <strong>Package Manager</strong></li>
-                        <li>Choose <strong>tv-monitoring.wgt</strong> from the list</li>
-                        <li>Confirm installation</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="step">
-                <div class="step-title">
-                    <span class="step-number">4</span>
-                    Launch the App
-                </div>
-                <div class="step-content">
-                    <ul>
-                        <li>Press <strong>Home</strong> button</li>
-                        <li>Go to <strong>Apps</strong> or <strong>My Apps</strong></li>
-                        <li>Find <strong>TV Monitoring</strong> app (or Komitex TV)</li>
-                        <li>Press <strong>OK</strong> to launch</li>
-                        <li>Enjoy watching! 🎉</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="success-box">
-                <h3>🎉 Installation Complete!</h3>
-                <p>Your Komitex TV app is now installed and ready to use. Use your remote control to navigate channels and programs.</p>
-            </div>
-        </div>
-        
-        <!-- Method 2: Network Installation -->
-        <div id="method-network" class="method-content">
-            <h2>🌐 Method 2: Network Installation (Advanced)</h2>
-            <p style="font-size: 1.2em; margin-bottom: 25px; opacity: 0.9;">Install over your local network</p>
-            
-            <div class="warning-box">
-                <h3>⚠️ Requirements</h3>
-                <p>This method requires Developer Mode enabled and your TV connected to the same network as your computer.</p>
-            </div>
-            
-            <div class="step">
-                <div class="step-title">
-                    <span class="step-number">1</span>
-                    Enable Developer Mode
-                </div>
-                <div class="step-content">
-                    <p>Follow the same steps as USB method to enable Developer Mode on your TV.</p>
                 </div>
             </div>
             
@@ -546,7 +474,7 @@
                     <p>On your Hisense TV:</p>
                     <ul>
                         <li>Go to <strong>Settings</strong> → <strong>System</strong> → <strong>Developer Settings</strong></li>
-                        <li>Enable <strong>USB Debugging</strong> or <strong>Network Installation</strong></li>
+                        <li>Enable <strong>Network Installation</strong></li>
                     </ul>
                 </div>
             </div>
@@ -583,9 +511,9 @@
             </div>
         </div>
         
-        <!-- Method 3: VIDAA Store -->
+        <!-- Method 2: VIDAA Store -->
         <div id="method-store" class="method-content">
-            <h2>🏪 Method 3: VIDAA App Store (For Public Distribution)</h2>
+            <h2>🏪 Method 2: VIDAA App Store (For Public Distribution)</h2>
             <p style="font-size: 1.2em; margin-bottom: 25px; opacity: 0.9;">Official distribution through VIDAA App Store</p>
             
             <div class="info-box">
@@ -655,7 +583,7 @@
                 <ul>
                     <li>Apps must comply with VIDAA content and technical guidelines</li>
                     <li>Review process may take 1-2 weeks</li>
-                    <li>For personal use, USB or Network installation is recommended</li>
+                    <li>For personal use, Network installation is recommended</li>
                 </ul>
             </div>
         </div>
@@ -739,11 +667,6 @@
             <div class="trouble-item">
                 <h4>📦 "Invalid package" error</h4>
                 <p><strong>Solution:</strong> Redownload tv-monitoring.wgt file. Ensure it's not corrupted. Check that your TV supports VIDAA platform.</p>
-            </div>
-            
-            <div class="trouble-item">
-                <h4>🔌 USB not recognized</h4>
-                <p><strong>Solution:</strong> Try a different USB drive. Format it as FAT32. Make sure the .wgt file is in the root directory (not in a folder).</p>
             </div>
             
             <div class="trouble-item">
